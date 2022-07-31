@@ -1,33 +1,33 @@
-var ladoEsquerdo = ["fazendeira", "carneiro", "alface", "lobo"];
-var ladoDireito = [];
-var dentroBarco = [];
-var ladoBarco = "esquerda";
+let ladoDireito = [];
+let ladoEsquerdo = ["fazendeira", "carneiro", "alface", "lobo"];
+let ladoBarco = "esquerda";
+let noBarco = [];
 
 
-function barcoGoDireita(){
-	var barco = document.getElementById("barco");
+function barcoirdireita(){
+	let barco = document.getElementById("barco");
 	barco.style.left = "400px";
-	for(i = 0; i < dentroBarco.length; i++){ 
-		if (dentroBarco[i] == "fazendeira"){left = "400px";}
-		if (dentroBarco[i] == "alface"){left = "490px";}
-		if (dentroBarco[i] == "carneiro"){eft = "410px";}
-		if (dentroBarco[i] == "lobo"){left = "450px";}
-		var objeto = document.getElementById(dentroBarco[i]);
+	for(i = 0; i < noBarco.length; i++){ 
+		if (noBarco[i] == "fazendeira"){left = "400px";}
+		if (noBarco[i] == "alface"){left = "490px";}
+		if (noBarco[i] == "carneiro"){eft = "410px";}
+		if (noBarco[i] == "lobo"){left = "450px";}
+		let objeto = document.getElementById(noBarco[i]);
 
 		objeto.style.left = left;
 	}1
 	ladoBarco = "direita";
 
 }
-function barcoGoEsquerda(){
-	var barco = document.getElementById("barco");
+function barcoiresquerda(){
+	let barco = document.getElementById("barco");
 	barco.style.left = "200px";
-	for(i = 0; i < dentroBarco.length; i++){ 
-		if (dentroBarco[i] == "fazendeira"){left = "200px";}
-		if (dentroBarco[i] == "alface"){left = "290px";}
-		if (dentroBarco[i] == "carneiro"){eft = "210px";}
-		if (dentroBarco[i] == "lobo"){left = "250px";}
-		var objeto = document.getElementById(dentroBarco[i]);
+	for(i = 0; i < noBarco.length; i++){ 
+		if (noBarco[i] == "fazendeira"){left = "200px";}
+		if (noBarco[i] == "alface"){left = "290px";}
+		if (noBarco[i] == "carneiro"){eft = "210px";}
+		if (noBarco[i] == "lobo"){left = "250px";}
+		let objeto = document.getElementById(noBarco[i]);
 
 		objeto.style.left = left;
 	}
@@ -38,16 +38,16 @@ function barcoGoEsquerda(){
 function debug(peca){
 	console.log("Lado Esquerdo: " + ladoEsquerdo);
 	console.log("Lado Direito: " + ladoDireito);
-	console.log("Dentro do Barco: " + dentroBarco);
+	console.log("Dentro do Barco: " + noBarco);
 	console.log("peca: " + peca)
 }
 
 function validaMovimento(){
 
-	if (dentroBarco.length > 2){
+	if (noBarco.length > 2){
 		return false;
 	}
-	if (!dentroBarco.includes("fazendeira")){
+	if (!noBarco.includes("fazendeira")){
 		return false;
 	}
 	if (ladoDireito.includes("carneiro") && ladoDireito.includes("lobo")){
@@ -70,14 +70,14 @@ function validaMovimento(){
 
 function clicouObjeto(peca){
 
-	var check = validaMovimento()
-	if(dentroBarco.includes(peca) && ladoBarco == "esquerda"){
+	let check = validaMovimento()
+	if(noBarco.includes(peca) && ladoBarco == "esquerda"){
 		barcoEsquerda(peca);
 	}
 	else if(ladoEsquerdo.includes(peca) && ladoBarco == "esquerda"){
 		esquerdaBarco(peca);
 	}
-	else if(dentroBarco.includes(peca) && ladoBarco == "direita"){
+	else if(noBarco.includes(peca) && ladoBarco == "direita"){
 		barcoDireita(peca);
 	}
 	else if(ladoDireito.includes(peca) && ladoBarco == "direita"){
@@ -85,14 +85,14 @@ function clicouObjeto(peca){
 	}
 	else if(check){
 		if(peca == "barco" && ladoBarco == "esquerda"){
-			barcoGoDireita();
+			barcoirdireita();
 		}
 		else if(peca == "barco" && ladoBarco == "direita"){
-			barcoGoEsquerda();
+			barcoiresquerda();
 		}
 	} 
 	else{
-		alert("Cuidado que alguma coisa pode dar errado")
+		alert("Você não pode fazer isso")
 	}
 	debug(peca);
 }
@@ -100,10 +100,10 @@ function clicouObjeto(peca){
 
 
 function esquerdaBarco(peca){
-	var barco = document.getElementById("barco");
-	var objeto = document.getElementById(peca);
-	var top = "0px";
-	var left = "0px";
+	let barco = document.getElementById("barco");
+	let objeto = document.getElementById(peca);
+	let top = "0px";
+	let left = "0px";
 	if (peca == "fazendeira"){top = "100px"; left = "200px";}
 	if (peca == "alface"){top = "180px"; left = "290px";}
 	if (peca == "carneiro"){top = "170px"; left = "210px";}
@@ -114,19 +114,19 @@ function esquerdaBarco(peca){
 
 	objeto.style.left = left;
 	objeto.style.top = top;
-	dentroBarco.push(peca);
+	noBarco.push(peca);
 
 
-	var a = ladoEsquerdo.indexOf(peca);
+	let a = ladoEsquerdo.indexOf(peca);
 	ladoEsquerdo.splice(a, 1);
 
 }
 
 function barcoEsquerda(peca){
-	var barco = document.getElementById("barco");
-	var objeto = document.getElementById(peca);
-	var top = "0px";
-	var left = "0px";
+	let barco = document.getElementById("barco");
+	let objeto = document.getElementById(peca);
+	let top = "0px";
+	let left = "0px";
 	if (peca == "fazendeira"){top = "150px"; left = "10px";}
 	if (peca == "alface"){top = "150px"; left = "140px";}
 	if (peca == "carneiro"){top = "300px"; left = "20px";}
@@ -138,14 +138,14 @@ function barcoEsquerda(peca){
 	ladoEsquerdo.push(peca);
 
 
-	var a = dentroBarco.indexOf(peca);
-	dentroBarco.splice(a, 1);
+	let a = noBarco.indexOf(peca);
+	noBarco.splice(a, 1);
 }
 function barcoDireita(peca){
-	var barco = document.getElementById("barco");
-	var objeto = document.getElementById(peca);
-	var top = "0px";
-	var left = "0px";
+	let barco = document.getElementById("barco");
+	let objeto = document.getElementById(peca);
+	let top = "0px";
+	let left = "0px";
 	if (peca == "fazendeira"){top = "150px"; left = "690px";}
 	if (peca == "alface"){top = "150px"; left = "660px";}
 	if (peca == "carneiro"){top = "300px"; left = "680px";}
@@ -157,15 +157,15 @@ function barcoDireita(peca){
 	ladoDireito.push(peca);
 
 
-	var a = dentroBarco.indexOf(peca);
-	dentroBarco.splice(a, 1);
+	let a = noBarco.indexOf(peca);
+	noBarco.splice(a, 1);
 	console.log(peca);
 }
 function direitaBarco(peca){
-	var barco = document.getElementById("barco");
-	var objeto = document.getElementById(peca);
-	var top = "0px";
-	var left = "0px";
+	let barco = document.getElementById("barco");
+	let objeto = document.getElementById(peca);
+	let top = "0px";
+	let left = "0px";
 	if (peca == "fazendeira"){top = "100px"; left = "400px";}
 	if (peca == "alface"){top = "180px"; left = "490px";}
 	if (peca == "carneiro"){top = "170px"; left = "410px";}
@@ -174,10 +174,10 @@ function direitaBarco(peca){
 
 	objeto.style.left = left;
 	objeto.style.top = top;
-	dentroBarco.push(peca);
+	noBarco.push(peca);
 
 
-	var a = ladoDireito.indexOf(peca);
+	let a = ladoDireito.indexOf(peca);
 	ladoDireito.splice(a, 1);
 	console.log(peca);
 }

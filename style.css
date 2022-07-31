@@ -1,5 +1,4 @@
 .title{
-	font-family: Teko;
 	font-size: 35px;
 }
 
@@ -25,8 +24,7 @@
 	color: #ccc;
 	text-align: center;
 	font-size: 15px;
-	font-family: helvetica;
-	padding: 20px;
+    padding: 20px;
 }
 
 .footer a{
@@ -69,8 +67,8 @@
 }
 #carneiro{
 	position: absolute;
-	width:50px;
-	left:20px;
+	width:60px;
+	left:30px;
 	top: 300px;
 	 
 
